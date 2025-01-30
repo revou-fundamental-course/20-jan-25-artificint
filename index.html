@@ -7,7 +7,11 @@
     
     <title>Kalkulator BMI</title>
 
-    <link rel="stylesheet" href="css\style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -16,51 +20,58 @@
         <section>
         <!-- Introduction -->
             <header class="main-header">
-                <h1>Kalkulator BMI</h1>
+                <h1>KALKULATOR BMI</h1>
             </header>
 
-        <article>
-            <p>Berat badan ideal adalah impian semua orang. Tidak hanya memiliki bentuk tubuh yang menunjang penampilan, berat badan ideal juga menandakan kondisi tubuh yang sehat. Bagaimana denganmu? <br> Yuk, hitung sekarang di kalkulator BMI.</p>
-        </article>
+            <article>
+                <p>Berat badan ideal adalah impian semua orang. Tidak hanya memiliki bentuk tubuh yang menunjang penampilan, berat badan ideal juga menandakan kondisi tubuh yang sehat. Bagaimana denganmu? <br> Yuk, hitung sekarang di kalkulator BMI.</p>
+            </article>
 
     <!-- Form -->
         <form action="">
             <div class="input-gender">
-                <label for="jenis-kelamin" class="gender-header"><b>Jenis Kelamin</b></label> <br>
-                <input type="radio" id="laki-laki" name="input-gender" value="laki-laki">
-                <label for="html">Laki-laki</label>
-                <input type="radio" id="perempuan" name="input-gender" value="Perempuan">
-                <label for="css">Perempuan</label>
-            </div>
+                <label for="label-jenis-kelamin">Jenis Kelamin</label>
+                <label for="male" class="gender-label">
+                    <input type="radio" id="male" name="gender" value="male"/>
+                    <ion-icon name="male-outline"></ion-icon>
+                    <p>Laki-laki</p>
+                </label>
+            
+                <label for="female" class="gender-label">
+                    <input type="radio" id="female" name="gender" value="female"/>
+                    <ion-icon name="female-outline"></ion-icon>
+                    <p>Perempuan</p>
+                </label>
+            </div>            
 
             <div class="form-group">
-                <label for="input-berat-badan"><b>Berat Badan (kg)</b></label>
+                <label for="input-berat-badan">Berat Badan (kg)</label>
                 <input type="number" id="input-berat-badan">
             </div>
 
             <div class="form-group">
-                <label for="input-usia"><b>Usia (tahun)</b></label>
+                <label for="input-usia">Usia (tahun)</label>
                 <input type="number" id="input-usia">
             </div>
 
             <div class="form-group">
-                <label for="input-tinggi-badan"><b>Tinggi Badan (cm)</b></label>
+                <label for="input-tinggi-badan">Tinggi Badan (cm)</label>
                 <input type="number" id="input-tinggi-badan">
             </div>
 
-            <div>
-                <button class="bg-tosca">Hitung BMI</button>
-                <button class="bg-white">Reset</button>
+            <div class="form-button">
+                <button class="bg-green" type="button" onclick="calculateBmi()">HITUNG BMI</button>
+                <button class="bg-grey" type="button" onclick="resetForm()">RESET</button>
             </div>
         </form>
     
     <!-- Feature Information -->   
             <section>
-                <header>
-                    <h2>Keunggulan Fitur</h2>
+                <header class="feature-header">
+                    <h2>Keunggulan Fitur</h2> <br>
                 </header>
 
-                <div class="strength-list">
+                <div class="feature-list">
                     <ol>
                         <li>Menghitung berat badan</li>
                         <li>Menentukan kategori berat badan ideal atau tidak</li>
@@ -69,7 +80,7 @@
                 </div>
 
                 <article>
-                    <p>Kalkulator ini hanya boleh digunakan oleh orang dewasa (wanita hamil atau menyusui tidak disarankan mengandalkan pembacaan BMI ini) dan tidak ada tindakan yang harus diambil berdasarkan nilainya selain berkonsultasi dengan orang yang memenuhi syarat seperti dokter. </p>
+                    <p>Kalkulator ini hanya boleh digunakan oleh orang dewasa (wanita hamil atau menyusui tidak disarankan mengandalkan pembacaan BMI ini) dan tidak ada tindakan yang harus diambil berdasarkan nilainya selain berkonsultasi dengan orang yang memenuhi syarat seperti dokter. </p> <br>
                 </article>
 
                 <article>
@@ -78,77 +89,55 @@
             </section>  
         </section>
     
-        <section>
+        <!-- Result BMI-->
+        <section class="result-page">
             <header>
-                <h2>Hasil</h2>
+                <h2>Hasil BMI</h2>
             </header>
             
-            <section class="result-section">
-                <section>
-                    <h4>Berat Badan Lebih</h4>
-                </section>
-                
-                <section class="result-bmi">
-                    <span id="result-bmi">24.7</span>
-                </section>
+            <section class="result-content">
+                <h4 id="result-category">Kategori</h4>
+                <span id="result-bmi" style="font-size: xx-large; font-weight: bold;">0</span>
+                <p id="result-message">Pesan hasil BMI</p>
+                <button id="download-button" class="bg-green hidden">Download Hasil BMI</button>
+            </section>
+        
+            <div id="bmi-advice" class="bmi-advice">
+                <p id="advice-message"></p>
+            </div>
 
-                <article>
-                    <p>Anda memiliki berat badan berlebih</p>
-                </article>
-
-                <div>
-                    <button class="bg-tosca">Download Hasil BMI</button>
+            <section class="desease-group hidden" id="result-section">
+                <div id="disease-section" class="disease-section">
+                    <ul id="disease-list">
+                    </ul>
+                </div>
+            
+                <div id="consultation-buttons" class="consultation-buttons">
+                    <button id="konsultasi-button" class="bg-green">Konsultasi Ahli Gizi</button>
+                    <button id="registrasi-button" class="bg-green">Registrasi Online Sekarang</button>
                 </div>
             </section>
-            
-            <div>
-                <p>Hasil BMI diantara 23 dan 25</p>
-                <p>Anda berada dalam kategori (berat badan berlebih atau lainnya). <br> Cara terbaik untuk menurunkan berat badan adalah dengan mengatur kalor makanan yang dikonsumsi dan berolahraga. <br>Jika BMI Anda berada dalam kategori ini maka Anda dianjurkan untuk menurunkan berat badan hingga batas normal. </p>
-            </div>
 
-            <div class="result-offer-button">
-                <button class="bg-tosca">Konsultasi Ahli Gizi Via Aplikasi</button>
-                <button class="bg-tosca">Registrasi Online Ahli Gizi</button>
-            </div>
-
+        </section>
+        
             <article>
                 <p>BMI tidak sepenuhnya mewakili diagnosis menyeluruh dari kesehatan tubuh dan resiko penyakit seseorang. Anda perlu konsultasi lebih lanjut mengenai resiko dan kekhawatiran Anda terkait dengan berat badan Anda.</p>
             </article>
-
-            <section>
-                <div class="desease-group">
-                    <header>
-                        <h4>Beberapa penyakit yang berasal dari kegemukan</h4>
-                    </header>
-    
-                    <div class="disease-list">
-                        <ul>
-                            <li>Diabetes</li>
-                            <li>Hipertensi</li>
-                            <li>Sakit Jantung</li>
-                            <li>Osteoarthritis</li>
-                        </ul>
-                    </div>
-                       
-                    <div>
-                        <button class="bg-tosca">Konsultasi Dokter Via Aplikasi</button>
-                        <button class="bg-tosca">Registrasi Online Sekarang</button>
-                    </div>
-                </div>
-            </section>
 
         </section>
     </main> 
 
 
-
     <footer>
         <section class="footer-span">
-            <span>Made by Ziyad@2025</span>
+            <span>RevoU Fundamental Course 2025 - Made by Ziyad</span>
         </section>
     </footer>
 
     <script src="js/script.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

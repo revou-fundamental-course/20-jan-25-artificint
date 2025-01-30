@@ -6,123 +6,276 @@
     text-decoration: none;
     outline: none;
 }
+
 html {
-    font-family: 'Montserrat', sans-serif;;
+    font-family: 'Montserrat', sans-serif;
     scroll-behavior: smooth;
 }
 
+body {
+    font-weight: 500;
+    background-color: #F4F4F4;
+
+}
+
+/* text color */
+p, .feature-list li {
+    color: #696969;
+}
+
+/* Layout Utama */
 main {
+    background-color: #F4F4F4;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     gap: 50px;
-    padding: 32px;
-
+    padding: 2% 20% 0 20%;
+    width: 100%;
 }
 
-section, h1, h2, h3, h4, p{
-    margin-bottom: 20px;
+/* Header */
+.main-header {
+    font-size: x-large;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 50px;
 }
 
-div {
-    margin-bottom: 10px;
-}
-
+/* Footer */
 footer {
-    background-color:rgb(204, 184, 159);
+    background-color:rgb(28, 28, 28);
     width: 100%;
     height: 50px;
     padding: 15px;
+    margin-top: 40px;
 }
 
 .footer-span {
     display: flex;
     justify-content: center;
     text-align: center;
-
+    color: #F4F4F4;
 }
 
-.container, .result-section {
-        display: flex;
-        flex-direction: column; 
-        gap: 20px; /* jarak antar elemen di dalam container */
-      
-}
-.main-header {
-    text-align: center;
-}
-
-input[type=number] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-}
-
-.input-gender {
-    padding-bottom: 15px;
-}
-
+/* Form Section */
 form {
-    margin: 0;
-    background-color: antiquewhite;
-    padding: 15px;
-    margin-bottom: 20px;
-}
-
-
-button {
-    border: none;
-    padding: 8px;
-    color: aliceblue;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.bg-tosca {
-    background-color: rgb(26, 105, 78);
-}
-
-.bg-white {
-    background-color: rgb(246, 251, 255);
-    color: rgb(23, 23, 23);
+    background-color: white;
+    padding: 70px;
+    border-radius: 25px;
+    width: 100%;
+    height: 500px;
+    margin: 25px auto 25px;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 
-.strength-list {
+/* Input Form */
+input[type=number] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #696969;
+    border-radius: 5px;
+}
+
+/* Tombol */
+button {
+    border: none;
+    padding: 10px;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color:rgb(28, 28, 28);
+    transition: 0.4s ease;
+}
+
+.form-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+}
+
+/* Button Design */
+.hidden {
+    display: none !important;
+} 
+
+.bg-green {
+    background-color:rgb(98, 171, 146); /* Warna tosca */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.bg-green:hover {
+    background-color: #1aa57b;
+}
+
+.bg-grey {
+    background-color: #F4F4F4;
+    color: rgb(23, 23, 23);
+    font-weight: bold;
+    width: 200px;
+}
+
+.bg-grey:hover {
+    background-color: #212121;
+    color: #F4F4F4;
+}
+
+.feature-list {
     padding-left: 40px;
     margin-bottom: 20px;
 }
 
-.result-section {
-    background-color: antiquewhite;
-    width: 100%;
-    padding: 30px;
-    text-align: center;
-}
-
-.result-bmi {
-    font-size: xx-large;
-    font-weight: 600;
-}
-
-.result-offer-button {
+/* Icon Gender Design */
+.input-gender {
+    display: flex;
+    gap: 20px;
+    justify-content: left;
     margin-bottom: 20px;
 }
 
-.desease-group {
-    justify-content: center;
-    text-align: center;
-    background-color: antiquewhite;
-    padding: 20px;
-    
+.input-gender p {
+    font-size: medium;
 }
 
-.disease-list li {
-    list-style: none;
+.input-gender label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 5px;
+}
+
+/* Menyembunyikan radio button standar */
+.input-gender input[type="radio"] {
+    display: none; 
+}
+
+ion-icon {
+    --ionicon-stroke-width: 70px;
+    color: #515151;
+  }
+
+.input-gender ion-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Radio button laki-laki checked */
+.input-gender input[type="radio"]#male:checked + ion-icon {
+    color: rgb(143, 182, 249);
+}
+
+/* Radio button Perempuan checked*/
+.input-gender input[type="radio"]#female:checked + ion-icon {
+    color: rgb(254, 162, 244);
+}
+
+/* Icon Hover */
+.input-gender label:hover ion-icon {
+    transform: scale(1.1);
+}
+
+/* Hasil BMI */
+.result-page {
+    justify-content: center;
+    width: 100%;
+}
+.result-content {
+    background-color: white;
+    gap: 20px;
+    padding: 70px;
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
+    margin: 20px 0 20px 0;
+}
+
+.result-header {
+    text-align: left;
+}
+
+.result-disease {
+    width: 100%;
+}
+.result-disease h4 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.result-message {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    line-height: 1.5; 
+}
+
+/* Bagian Konsultasi & Penyakit */
+.desease-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 70px;
+    width: 100%;
+    height: auto;
+}
+
+.desease-group {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 50px;
+    padding: 70px;
+    width: 100%;
+}
+
+.desease-group li {
+    margin-top: 10px;
+    list-style: none;
+    color: #515151;
+}
+
+.consultation-buttons {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+}
+
+
+/* Responsive - Untuk layar kecil - 480px */
+@media screen and (max-width: 480px) {
+    form, .result-section, .desease-group {
+        width: 90%;
+    }
+
+    .consultation-buttons {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+    }
 }
